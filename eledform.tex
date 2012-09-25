@@ -1,0 +1,20 @@
+\def\manuscrits{}
+
+\newcommand{\var}[3]{%
+    \edtext{#1}{\Afootnote{\del{#2}}}
+}
+
+\newcommand{\del}[1]{%
+	\renewcommand{\do}[1]{%
+		\ifinlist{##1}{\manuscrits}%
+		{##1}%
+		{\eledmac@warning{Man. ##1 inconnu, p.\the\page@num  ; l.\the\line@num}Man. ##1 inconnu}
+	}%
+	\docsvlist{#1} \emph{omit}%
+}
+
+\newcommand{\variante}[2]{%
+	\ifinlist{#1}{\manuscrits}%
+		{#1 #2}%
+		{\eledmac@warning{Man. #1 inconnu, p.\the\page@num  ; l.\the\line@num ; #2}Man. #1 #2}%
+	}
