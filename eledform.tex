@@ -27,7 +27,7 @@
 
 \newcommand{\del}[1]{%
 	\renewcommand{\do}[1]{%
-		\print@manuscript##1%
+		\print@manuscript{##1}%
 	}%
 	\docsvlist{#1} \emph{omit}%
 }
@@ -39,7 +39,7 @@
 
 \newcommand{\variante}[2]{%
 	\renewcommand{\do}[1]{%
-		\print@manuscript##1%
+		\print@manuscript{##1}%
 		}%
 	\docsvlist{#1} #2%
 	}
