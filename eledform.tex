@@ -7,10 +7,12 @@
 }
 
 
-\newcommand{\var}[3]{%
-    \edtext{#1}{\Afootnote{%
-        \ifstrempty{#2}{}{\del{#2}\ifstrempty{#3}{}{ ; }}%
-        \variantes{#3}%
+\newcommandx*{\var}[4][4]{%
+    \edtext{#1}{%
+    	\ifstrempty{#4}{}{\lemma{#4}}%
+    	\Afootnote{%
+        	\ifstrempty{#2}{}{\del{#2}\ifstrempty{#3}{}{ ; }}%
+        	\variantes{#3}%
     }}
 }
 
