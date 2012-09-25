@@ -6,6 +6,7 @@
 \manuscript{A,B,C,D}
 
 \begin{document}
+\makeatletter
 
 \beginnumbering
 \pstart
@@ -16,6 +17,11 @@
 \var{ipsum}{}{{C}{ipsem}}
 \var{dolor}{E}{}
 \var{sit amet consectetur adipiscing elit}{B,C}{}[sit\ldots elit]
+
+\var{sed}{}{
+	{{C,D}{sid}}
+	}
+
 \pend
 \endnumbering
 \end{document}

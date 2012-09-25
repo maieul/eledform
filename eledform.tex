@@ -27,7 +27,7 @@
 	\renewcommand{\do}[1]{%
 		\ifinlist{##1}{\manuscripts@}%
 		{##1}%
-		{\eledmac@warning{Man. ##1 unknew, p.\the\page@num  ; l.\the\line@num}Man. ##1 inconnu}%
+		{\eledmac@warning{Man. ##1 unknew, p.\the\page@num  ; l.\the\line@num}Man. ##1 unknew}%
 	}%
 	\docsvlist{#1} \emph{omit}%
 }
@@ -35,6 +35,6 @@
 \newcommand{\variante}[2]{%
 	\ifinlist{#1}{\manuscripts@}%
 		{#1 #2}%
-		{\eledmac@warning{Man. #1 unknew, p.\the\page@num  ; l.\the\line@num ; #2}Man. #1 #2}%
+		{\eledmac@warning{Man. #1 unknew, p.\the\page@num  ; l.\the\line@num ; #2}Man. #1 unknew #2}%
 	}
 \makeatother
