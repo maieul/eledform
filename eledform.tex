@@ -11,30 +11,34 @@
     \edtext{#1}{%
     	\ifstrempty{#4}{}{\lemma{#4}}%
     	\Afootnote{%
-        	\ifstrempty{#2}{}{\del{#2}\ifstrempty{#3}{}{ ; }}%
+        	\ifstrempty{#2}{}{\del{#2}\ifstrempty{#3}{}{\space; }}%
         	\variantes{#3}%
-    }}
+    }}%
 }
 
 \newcommand{\variantes}[1]{%
 	\newif\iffirst%
 	\firsttrue%
-	\renewcommand{\do}[1]{\iffirst\firstfalse\else ; \fi\variante##1}%
+	\renewcommand{\do}[1]{\iffirst\firstfalse\else\space; \fi{\variante##1}}%
 	\docsvlist{#1}%
 	}
 
 \newcommand{\del}[1]{%
 	\renewcommand{\do}[1]{%
-		\ifinlist{##1}{\manuscripts@}%
-		{##1}%
-		{\eledmac@warning{Man. ##1 unknew, p.\the\page@num  ; l.\the\line@num}Man. ##1 unknew}%
+		\print@manuscript##1%
 	}%
 	\docsvlist{#1} \emph{omit}%
 }
+\newcommand{\print@manuscript}[1]{%
+	\ifinlist{#1}{\manuscripts@}%
+		{#1}%
+		{\eledmac@warning{Unknew man. #1, p.\the\page@num  ; l.\the\line@num}\underline{unknew man. #1}}%
+	}
 
 \newcommand{\variante}[2]{%
-	\ifinlist{#1}{\manuscripts@}%
-		{#1 #2}%
-		{\eledmac@warning{Man. #1 unknew, p.\the\page@num  ; l.\the\line@num ; #2}Man. #1 unknew #2}%
+	\renewcommand{\do}[1]{%
+		\print@manuscript##1%
+		}%
+	\docsvlist{#1} #2%
 	}
 \makeatother
