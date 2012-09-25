@@ -7,10 +7,19 @@
 }
 
 
-
 \newcommand{\var}[3]{%
-    \edtext{#1}{\Afootnote{\del{#2}}}
+    \edtext{#1}{\Afootnote{%
+        \ifstrempty{#2}{}{\del{#2}\ifstrempty{#3}{}{ ; }}%
+        \variantes{#3}%
+    }}
 }
+
+\newcommand{\variantes}[1]{%
+	\newif\iffirst%
+	\firsttrue%
+	\renewcommand{\do}[1]{\iffirst\firstfalse\else ; \fi\variante##1}%
+	\docsvlist{#1}%
+	}
 
 \newcommand{\del}[1]{%
 	\renewcommand{\do}[1]{%
