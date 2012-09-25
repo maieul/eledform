@@ -1,4 +1,6 @@
 \makeatletter
+\let\varnote@\Afootnote
+\newcommand{\varseries}[1]{\letcs{\varnote@}{#1footnote}}
 \def\manuscripts@{}
 
 \newcommand{\manuscript}[1]{%
@@ -10,7 +12,7 @@
 \newcommandx*{\var}[4][4]{%
     \edtext{#1}{%
     	\ifstrempty{#4}{}{\lemma{#4}}%
-    	\Afootnote{%
+    	\varnote@{%
         	\ifstrempty{#2}{}{\del{#2}\ifstrempty{#3}{}{\space; }}%
         	\variantes{#3}%
     }}%
