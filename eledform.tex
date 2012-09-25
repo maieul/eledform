@@ -1,4 +1,12 @@
-\def\manuscrits{}
+\makeatletter
+\def\manuscripts@{}
+
+\newcommand{\manuscript}[1]{%
+	\renewcommand{\do}[1]{\listgadd{\manuscripts@}{##1}}%
+	\docsvlist{#1}%
+}
+
+
 
 \newcommand{\var}[3]{%
     \edtext{#1}{\Afootnote{\del{#2}}}
@@ -6,15 +14,16 @@
 
 \newcommand{\del}[1]{%
 	\renewcommand{\do}[1]{%
-		\ifinlist{##1}{\manuscrits}%
+		\ifinlist{##1}{\manuscripts@}%
 		{##1}%
-		{\eledmac@warning{Man. ##1 inconnu, p.\the\page@num  ; l.\the\line@num}Man. ##1 inconnu}
+		{\eledmac@warning{Man. ##1 unknew, p.\the\page@num  ; l.\the\line@num}Man. ##1 inconnu}
 	}%
 	\docsvlist{#1} \emph{omit}%
 }
 
 \newcommand{\variante}[2]{%
-	\ifinlist{#1}{\manuscrits}%
+	\ifinlist{#1}{\manuscripts@}%
 		{#1 #2}%
-		{\eledmac@warning{Man. #1 inconnu, p.\the\page@num  ; l.\the\line@num ; #2}Man. #1 #2}%
+		{\eledmac@warning{Man. #1 unknew, p.\the\page@num  ; l.\the\line@num ; #2}Man. #1 #2}%
 	}
+\makeatother
