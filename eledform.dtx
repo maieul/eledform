@@ -22,7 +22,7 @@
 \documentclass{ltxdoc}
 \usepackage{polyglossia,csquotes}
 \setmainlanguage{english}
-\usepackage{eledmac,eledform}
+\usepackage{eledmac,eledform,tikz,tikz-qtree}
 \usepackage{hyperref}
 \EnableCrossrefs
 \CodelineIndex
@@ -209,7 +209,7 @@
 }
 %    \end{macrocode}
 % \end{macro}
-% \begin{macro}{\print@manuscripts}
+% \begin{macro}{\print@manuscript}
 % The \cs{print@manuscripts} command only print the manuscripts where a variant exists.
 %    \begin{macrocode}
 \newcommand{\print@manuscript}[1]{%
@@ -296,6 +296,10 @@
 % \end{macro}
 % \end{macro}
 % \end{macro}
+% \subsection{Stemma of the code}
+% So, the next figure is an stemma of the code.
+%
+% \hspace{-3cm}\noindent\input{stemma}
 % \newpage
 % \phantomsection\addcontentsline{toc}{section}{Changes}
 % \PrintChanges
