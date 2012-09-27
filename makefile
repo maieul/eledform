@@ -12,7 +12,10 @@ PACKAGE = *.dtx \
 all:eledform.sty eledform.pdf dist clean
 
 
-
+example.pdf:example.tex eledform.sty
+	pdflatex example.tex
+	pdflatex example.tex
+	pdflatex example.tex
 
 %.sty: %.ins %.dtx 
 	@rm -f $*.sty
