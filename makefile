@@ -23,9 +23,9 @@ example.pdf:example.tex eledform.sty
 
 %.pdf: %.dtx %.sty
 	@xelatex $*.dtx
+	@xelatex $*.dtx
 	makeindex -s gglo.ist -o $*.gls $*.glo
 	makeindex -s gind.ist -o $*.ind $*.idx
-	@xelatex $*.dtx
 	@xelatex $*.dtx
 	
 
