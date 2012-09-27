@@ -4,3 +4,11 @@
 *.log
 *.pdf
 *.sty
+*.gls
+*.glo
+*.toc
+*.out
+*(busy)
+*.idx
+*.ind
+*.ilg
