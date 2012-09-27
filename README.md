@@ -8,12 +8,15 @@ This package provide formal commands to describe textual variants.
 It uses eledmac.
 
 The distributions contains :
-* Code and documentation :
-** eledform.dtx
-** eledform.ins
-** eledform.PDF 
-** include/*
-** example.tex
-** example.pdf
+- eledform.dtx
+- eledform.ins
+- eledform.PDF 
+- include/*
+- example.tex
+- example.pdf
 
 and the present README.md file
+
+Public repository : https://github.com/maieul/eledform.
+
+Support for new features and debug : https://github.com/maieul/eledform/issues
