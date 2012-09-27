@@ -1,10 +1,12 @@
 \makeatletter
-\newcommand{\omittext}[1]{\gdef\omittext@{#1}}
-\def\omittext@{\emph{omit}}
-\newcommand{\manvarseparator}[1]{\gdef\manvarseparator@{#1}}
-\def\manvarseparator@{~}
-\def\varseparator@{\space}
-\newcommand{\varseparator}[1]{\gdef\varseparator@{#1}}
+\newcommand{\new@eledform@custom}[2]{%
+	\csgdef{#1@}{#2}%
+	\expandafter\newcommand\csname#1\endcsname[1]{\csgdef{#1@}{##1}}%
+}
+
+\new@eledform@custom{omittext}{\emph{omit}}
+\new@eledform@custom{manvarseparator}{~}
+\new@eledform@custom{varseparator}{\space}
 \let\varnote@\Afootnote
 \newcommand{\varseries}[1]{\letcs{\varnote@}{#1footnote}}
 \def\manuscripts@{}
