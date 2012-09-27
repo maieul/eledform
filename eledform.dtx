@@ -117,7 +117,8 @@
 % \manuscripts{A,B,C,D}
 % \end{verbatim}
 % \subsubsection{Declare variants}
-% \DescribeMacro{\var} 
+% \DescribeMacro{\varseries}
+%  
 % The main macro is \cs{var}\oarg[short]{lemma}{del}{variants}[other].
 % This macro takes five arguments, two are optional.
 % \begin{description}
@@ -131,7 +132,22 @@
 %  	\end{description}
 %   \item[\meta{other}(optional)]other code linked to the lemma, for example a call to an critical footnote. 
 % \end{description}
+% \subsubsection{Customize}
+% \DescribeMacro{\varseries}
+% By default, the notes for textual variants are printed in the A series of footnotes.
+% With \cs{varseries}\marg{letter}, you can change it.
+%
+% \DescribeMacro{\omittext}
+% When a manuscript omit a lemma, \emph{eledform} print \verb|\emph{omit}|.
+% You can change it with \cs{omittext}\marg{text}.
 % 
+% \DescribeMacro{\manvarseparator}
+% By default, a non breakable space is printed between the manuscript and the variant.
+% You can change it with \cs{manvarseparator}\marg{separator}.
+%
+% \DescribeMacro{\varseparator}
+% By default, a breakable space is printed beteween each variants of a lemma. 
+% You can change it with \cs{varseparator}\marg{separator}.
 %\StopEventually{\PrintChanges}
 % \section{Implementation}
 % \subsection{Define manuscripts}
