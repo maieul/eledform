@@ -104,6 +104,34 @@
 % With \emph{eledform}, this will produce the same thing that the no formalised form,
 % but without no described inconveniences.
 % You could see example in the file \href{example.tex}{example.tex}, which produces \href{example.pdf}{example.pdf}.
+% \subsection{References}
+% \subsubsection{Declare the manuscripts}
+% \DescribeMacro{\manuscripts}
+% You must use \cs{Manuscripts}\marg{list}
+% to provide to \LaTeX the list of manuscripts used in the apparatus.
+% \LaTeX will print a warning message in the log file if you describe a variant
+% inside a manuscript which does'nt exist.
+% It also print an error in the PDF.
+% The list of manuscripts is a comma separated list:
+% \begin{verbatim}
+% \manuscripts{A,B,C,D}
+% \end{verbatim}
+% \subsubsection{Declare variants}
+% \DescribeMacro{\var} 
+% The main macro is \cs{var}\oarg[short]{lemma}{del}{variants}[other].
+% This macro takes five arguments, two are optional.
+% \begin{description}
+%   \item[\meta{short}  (optional)]an abbreviated version of the lemma for the notes.
+%   \item[\meta{lemma}]the lemma which have variants.
+%   \item[\meta{del}]a comma separated list of manuscripts where the lemma is ommited.
+%   \item[\meta{variants}]a comma separated list of variants. Each variant has the form \marg{manuscripts}\marg{variant}, where:
+% 	\begin{description}
+% 	 \item[\meta{manuscripts}]a comma separated list of manuscripts where the variant is.
+% 	 \item[\meta{variant}]the variant itself.
+%  	\end{description}
+%   \item[\meta{other}(optional)]other code linked to the lemma, for example a call to an critical footnote. 
+% \end{description}
+% 
 %\StopEventually{\PrintChanges}
 % \section{Implementation}
 % \subsection{Define manuscripts}
