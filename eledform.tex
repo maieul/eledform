@@ -9,12 +9,12 @@
 }
 
 
-\newcommandx*{\var}[4][4]{%
-    \edtext{#1}{%
-    	\ifstrempty{#4}{}{\lemma{#4}}%
+\newcommandx*{\var}[4][1,usedefault]{%
+    \edtext{#2}{%
+    	\ifstrempty{#1}{}{\lemma{#1}}%
     	\varnote@{%
-        	\ifstrempty{#2}{}{\del@{#2}\ifstrempty{#3}{}{\space; }}%
-        	\var@{#3}%
+        	\ifstrempty{#3}{}{\del@{#3}\ifstrempty{#4}{}{\space; }}%
+        	\var@{#4}%
     }}%
 }
 
