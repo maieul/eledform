@@ -13,19 +13,19 @@
     \edtext{#1}{%
     	\ifstrempty{#4}{}{\lemma{#4}}%
     	\varnote@{%
-        	\ifstrempty{#2}{}{\del{#2}\ifstrempty{#3}{}{\space; }}%
-        	\variantes{#3}%
+        	\ifstrempty{#2}{}{\del@{#2}\ifstrempty{#3}{}{\space; }}%
+        	\var@{#3}%
     }}%
 }
 
-\newcommand{\variantes}[1]{%
+\newcommand{\var@}[1]{%
 	\newif\iffirst%
 	\firsttrue%
-	\renewcommand{\do}[1]{\iffirst\firstfalse\else\space; \fi{\variante##1}}%
+	\renewcommand{\do}[1]{\iffirst\firstfalse\else\space; \fi{\var@@##1}}%
 	\docsvlist{#1}%
 	}
 
-\newcommand{\del}[1]{%
+\newcommand{\del@}[1]{%
 	\renewcommand{\do}[1]{%
 		\print@manuscript{##1}%
 	}%
@@ -37,7 +37,7 @@
 		{\eledmac@warning{Unknew man. #1, p.\the\page@num  ; l.\the\line@num}\underline{unknew man. #1}}%
 	}
 
-\newcommand{\variante}[2]{%
+\newcommand{\var@@}[2]{%
 	\renewcommand{\do}[1]{%
 		\print@manuscript{##1}%
 		}%
