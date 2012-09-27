@@ -1,5 +1,6 @@
 PACKAGE = *.dtx \
-		  *.pdf \
+		  eledform.pdf \
+		  example.pdf \
 		  *.ins \
 		  *.tex \
 		  include/*\
