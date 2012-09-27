@@ -2,6 +2,7 @@ PACKAGE = *.dtx \
 		  *.pdf \
 		  *.ins \
 		  *.tex \
+		  include/*\
 		  makefile
 
 
