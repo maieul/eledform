@@ -20,7 +20,7 @@
 %\ProvidesPackage{eleform}[29/09/2012 v1.0 formalism for eledmac]
 %<*driver>
 \documentclass{ltxdoc}
-\usepackage{polyglossia}
+\usepackage{polyglossia,csquotes}
 \setmainlanguage{english}
 \usepackage{eledmac,eledform}
 \usepackage{hyperref}
@@ -60,9 +60,50 @@
 % The \emph{eledmac} package provides tools to make critical edition of text.
 % But it doesn't provide any formalism to note the textual variants: all user have to make is own formalism.
 % This package try to provide a formalism
-% which distinguishes between the \emph{formal} notation of textual variants and their typographic notation.
+% which distinguishes between the \emph{formal} notation of textual variants and their typographic notation\thanks{The original idea of this package is described at \url{http://geekographie.maieul.net/Formaliser-les-variantes}.}.
 % \end{abstract}
 % \tableofcontents
+% \section{Use}
+% \subsection{One Example}
+% \subsubsection{Without formalism}
+% Suppose this case :
+% \begin{enumerate}
+% \item One text, with fives manuscripts: P, A, B, C, D. P 
+% P is the manuscript which is used as reference.
+% Variants in A, B, C, D are shown in the apparatus.
+% \item The pseudo-word \enquote{lorem} have these variants :
+% 	\begin{description}
+%  	 \item[A and B]the word is omitted.
+% 	 \item[C]the word is replaced by \enquote{loram}.
+% 	 \item[D]the word is replaced by \enquote{lorim}. 
+% 	\end{description}
+% \end{enumerate}
+% Without formalism, you could write :
+% \begin{verbatim}
+% \edtext{lorem}{\Afootnote{AB \emph{omit} ; C loram ; D lorim}}
+% \end{verbatim}
+% Which produces in the critical notes:
+% \begin{quote}
+% lorem] AB omit ; C loram ; D lorim
+% \end{quote}
+% There is some limits of this method:
+% \begin{itemize}
+% \item If we want to change display, we must changes all notes.
+% \item We can't produce statistics.
+% \item Difficulty to export in other format than \LaTeX.
+% \item No method to check if we don't make mistake about manuscript.
+% \end{itemize}
+% \subsubsection{With formalism}
+% To describe the same thing, we propose this formalism :
+% \begin{verbatim}
+%\var{lorem}{A,B}{
+%{{C}{loram}},
+%{{D}{lorim}}
+%}
+% \end{verbatim}
+% With \emph{eledform}, this will produce the same thing that the no formalised form,
+% but without no described inconveniences.
+% You could see example in the file \href{example.tex}{example.tex}, which produces \href{example.pdf}{example.pdf}.
 %\StopEventually{\PrintChanges}
 % \section{Implementation}
 % \subsection{Define manuscripts}
