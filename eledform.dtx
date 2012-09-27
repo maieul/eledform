@@ -16,8 +16,6 @@
 % \fi
 
 % \iffalse
-%\NeedsTeXFormat{LaTeX2e}
-%\ProvidesPackage{eleform}[29/09/2012 v1.0 formalism for eledmac]
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage{polyglossia,csquotes}
@@ -32,7 +30,7 @@
 \end{document}
 %</driver>
 % \fi
-% \CheckSum{79}
+% \CheckSum{81}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -50,10 +48,10 @@
 %   Right brace   \}     Tilde         \~}
 %
 % \changes{v1.0}{2012/09/26}{First public release}
-% \GetFileInfo{eleform.sty}
+% \GetFileInfo{eledform.sty}
 %\DoNotIndex{\csgdef,\if,\fi,\else,\listgadd}
 %
-%\title{Eledform extension for eledmac\thanks{This handnote is for version~\fileversion of \textsf{eledform}, last revised \filedate.}}
+%\title{Eledform extension for eledmac\thanks{This handnote is for version~\fileversion\space of \textsf{eledform}, last revised \filedate.}}
 % \author{Maïeul Rouquette \\ maieul at maieul dot net}
 % \maketitle
 % \begin{abstract}
@@ -150,6 +148,10 @@
 % You can change it with \cs{varseparator}\marg{separator}.
 %\StopEventually{\PrintChanges}
 % \section{Implementation}
+%    \begin{macrocode}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{eleform}[2012/29/09 v1.0 formalism for eledmac]
+%    \end{macrocode}
 % \subsection{Define manuscripts}
 % \begin{macro}{\manuscripts@}
 % The \cs{manuscripts@} macro is an etoolbox list.
