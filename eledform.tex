@@ -1,4 +1,6 @@
 \makeatletter
+\def\varseparator@{\space}
+\newcommand{\varseparator}[1]{\gdef\varseparator@{#1}}
 \let\varnote@\Afootnote
 \newcommand{\varseries}[1]{\letcs{\varnote@}{#1footnote}}
 \def\manuscripts@{}
@@ -17,7 +19,7 @@
 		{\del@{#3}%
 		\ifstrempty{#4}%
 			{}%
-			{\space; }
+			{\varseparator@}%
 		}%
         	\var@{#4}%
     	}%
@@ -28,7 +30,7 @@
 \newcommand{\var@}[1]{%
 	\newif\iffirst%
 	\firsttrue%
-	\renewcommand{\do}[1]{\iffirst\firstfalse\else\space; \fi{\var@@##1}}%
+	\renewcommand{\do}[1]{\iffirst\firstfalse\else\varseparator@\fi{\var@@##1}}%
 	\docsvlist{#1}%
 	}
 
