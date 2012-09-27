@@ -1,4 +1,6 @@
 \makeatletter
+\newcommand{\omittext}[1]{\gdef\omittext@{#1}}
+\def\omittext@{\emph{omit}}
 \newcommand{\manvarseparator}[1]{\gdef\manvarseparator@{#1}}
 \def\manvarseparator@{~}
 \def\varseparator@{\space}
@@ -40,7 +42,7 @@
 	\renewcommand{\do}[1]{%
 		\print@manuscript{##1}%
 	}%
-	\docsvlist{#1}\manvarseparator@\emph{omit}%
+	\docsvlist{#1}\manvarseparator@\omittext@%
 }
 \newcommand{\print@manuscript}[1]{%
 	\ifinlist{#1}{\manuscripts@}%
