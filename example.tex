@@ -3,25 +3,25 @@
 \firstlinenum{1}
 \linenumincrement{1}
 \input{eledform}
-\manuscript{A,B,C,D}
+\manuscript{A,B,C,D}	% Define the existing manuscripts
 
 \begin{document}
 \makeatletter
-\varseries{B}
+\varseries{B}			% Define the series where textual variants will be printed
 \beginnumbering
 \pstart
-\edtext{}{\Afootnote{s}}
-\var{lorem}{A,B}{
+\edtext{}{\Afootnote{s}}	% Example to test \varseries
+\var{lorem}{A,B}{		% Basic example
 {{C}{loram}},
 {{D}{lorim}}
 }
-\var{ipsum}{}{{C}{ipsem}}
-\var{dolor}{E}{}
-\var[sit\ldots elit]{sit amet consectetur adipiscing elit}{B,C}{}
-\var{sed}{}{
+\var{ipsum}{}{{C}{ipsem}}	% Only variants
+\var{dolor}{C}{}		% Only deletion
+\var[sit\ldots elit]{sit amet consectetur adipiscing elit}{B,C}{}	% Syntaxe with shortened lemma
+\var{sed}{}{			% Example with two manuscripts with the same form
 	{{C,D}{sid}}
 	}
-\var{do}{}{
+\var{do}{}{			% Example with a wrong manuscript
 	{{C,E}{da}}
 	}
 \pend
