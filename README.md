@@ -4,7 +4,7 @@ Licence LPLL 1.3.c
 
 http://www.latex-project.org/lppl/lppl-1-3c.html
 
-This package provide formal commands to describe textual variants.
+This package provides formal commands to describe textual variants.
 It uses eledmac.
 
 The distributions contains :
