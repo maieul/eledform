@@ -3,7 +3,8 @@ PACKAGE = *.dtx \
 		  *.ins \
 		  *.tex \
 		  include/*\
-		  makefile
+		  makefile\
+		  README.md
 
 
 
