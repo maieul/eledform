@@ -1,4 +1,6 @@
 \makeatletter
+\newcommand{\manvarseparator}[1]{\gdef\manvarseparator@{#1}}
+\def\manvarseparator@{~}
 \def\varseparator@{\space}
 \newcommand{\varseparator}[1]{\gdef\varseparator@{#1}}
 \let\varnote@\Afootnote
@@ -38,7 +40,7 @@
 	\renewcommand{\do}[1]{%
 		\print@manuscript{##1}%
 	}%
-	\docsvlist{#1} \emph{omit}%
+	\docsvlist{#1}\manvarseparator@\emph{omit}%
 }
 \newcommand{\print@manuscript}[1]{%
 	\ifinlist{#1}{\manuscripts@}%
@@ -50,6 +52,6 @@
 	\renewcommand{\do}[1]{%
 		\print@manuscript{##1}%
 		}%
-	\docsvlist{#1} #2%
+	\docsvlist{#1}\manvarseparator@#2%
 	}
 \makeatother
