@@ -55,10 +55,10 @@
 % \author{Maïeul Rouquette \\ maieul at maieul dot net}
 % \maketitle
 % \begin{abstract}
-% The \emph{eledmac} package provides tools to make critical edition of text.
-% But it doesn't provide any formalism to note the textual variants: all user have to make is own formalism.
+% The \emph{eledmac} package provides tools to make critical editions of texts.
+% But it doesn't provide any formalism to note the textual variants: each user has to make his own formalism.
 % This package try to provide a formalism
-% which distinguishes between the \emph{formal} notation of textual variants and their typographic notation\footnote{The original idea of this package is described at \url{http://geekographie.maieul.net/Formaliser-les-variantes}. You can suggest new features or report bugs at \url{https://github.com/maieul/eledform/issues}.}.
+% which distinguishes between the \emph{formal} notation of textual variants and their typographical notation\footnote{The original idea of this package is described at \url{http://geekographie.maieul.net/Formaliser-les-variantes}. You can suggest new features or report bugs at \url{https://github.com/maieul/eledform/issues}.}.
 % \end{abstract}
 % \tableofcontents
 % \section{Use}
@@ -66,10 +66,10 @@
 % \subsubsection{Without formalism}
 % Suppose this case :
 % \begin{enumerate}
-% \item One text, with fives manuscripts: P, A, B, C, D. P 
+% \item One text, with fives manuscripts: P, A, B, C, D.
 % P is the manuscript which is used as reference.
 % Variants in A, B, C, D are shown in the apparatus.
-% \item The pseudo-word \enquote{lorem} have these variants :
+% \item The pseudo-word \enquote{lorem} has these variants :
 % 	\begin{description}
 %  	 \item[A and B]the word is omitted.
 % 	 \item[C]the word is replaced by \enquote{loram}.
@@ -84,7 +84,7 @@
 % \begin{quote}
 % lorem] AB omit ; C loram ; D lorim
 % \end{quote}
-% There is some limits of this method:
+% There is some limits with this method:
 % \begin{itemize}
 % \item If we want to change display, we must changes all notes.
 % \item We can't produce statistics.
@@ -99,14 +99,14 @@
 %{{D}{lorim}}
 %}
 % \end{verbatim}
-% With \emph{eledform}, this will produce the same thing that the no formalised form,
-% but without no described inconveniences.
+% With \emph{eledform}, this will produce the same thing that the non-formalised form,
+% but without described inconveniences.
 % You could see example in the file \href{example.tex}{example.tex}, which produces \href{example.pdf}{example.pdf}.
 % \subsection{References}
 % \subsubsection{Declare the manuscripts}
 % \DescribeMacro{\manuscripts}
 % You must use \cs{Manuscripts}\marg{list}
-% to provide to \LaTeX the list of manuscripts used in the apparatus.
+% to provide to \LaTeX\space the list of manuscripts used in the apparatus.
 % \LaTeX will print a warning message in the log file if you describe a variant
 % inside a manuscript which does'nt exist.
 % It also print an error in the PDF.
@@ -117,11 +117,11 @@
 % \subsubsection{Declare variants}
 % \DescribeMacro{\varseries}
 %  
-% The main macro is \cs{var}\oarg[short]{lemma}{del}{variants}[other].
+% The main macro is \cs{var}\oarg{short}\marg{lemma}\marg{del}\marg{variants}\oarg{other}.
 % This macro takes five arguments, two are optional.
 % \begin{description}
 %   \item[\meta{short}  (optional)]an abbreviated version of the lemma for the notes.
-%   \item[\meta{lemma}]the lemma which have variants.
+%   \item[\meta{lemma}]the lemma which has variants.
 %   \item[\meta{del}]a comma separated list of manuscripts where the lemma is ommited.
 %   \item[\meta{variants}]a comma separated list of variants. Each variant has the form \marg{manuscripts}\marg{variant}, where:
 % 	\begin{description}
@@ -144,7 +144,7 @@
 % You can change it with \cs{manvarseparator}\marg{separator}.
 %
 % \DescribeMacro{\varseparator}
-% By default, a breakable space is printed beteween each variants of a lemma. 
+% By default, a breakable space is printed beteween each variant of a lemma. 
 % You can change it with \cs{varseparator}\marg{separator}.
 %\StopEventually{\PrintChanges}
 % \section{Implementation}
@@ -192,7 +192,7 @@
             \ifstrempty{#3}{}%
         {\del@{#3}%
 %    \end{macrocode}
-%  If the third and fourth arg are both not empty, we print the separator bewteen variants.
+%  If the third and fourth arg are both not empty, we print the separator between variants.
 %    \begin{macrocode}
         \ifstrempty{#4}%
             {}%
@@ -212,7 +212,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\print@manuscript}
-% The \cs{print@manuscripts} command only print the manuscripts where a variant exists.
+% The \cs{print@manuscripts} command only prints the manuscripts where a variant exists.
 %    \begin{macrocode}
 \newcommand{\print@manuscript}[1]{%
     \ifinlist{#1}{\manuscripts@}%
@@ -260,23 +260,23 @@
 % \subsection{Customization}
 % \subsubsection{The footnote series}
 % \begin{macro}{\varnote@}\label{varnote}
-% The \cs{varnote@} macro is just a reference to a critical footnote macro of eledmac.
+% The \cs{varnote@} macro is only a reference to a critical footnote macro of eledmac.
 % The default  is \cs{Afootnote}.
 %    \begin{macrocode}
 \let\varnote@\Afootnote
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\varseries}
-% The \cs{varseries} macro just redefine the reference.
+% The \cs{varseries} macro redefines the reference.
 %    \begin{macrocode}
 \newcommand{\varseries}[1]{\letcs{\varnote@}{#1footnote}}
 %    \end{macrocode}
 % \end{macro}
 % \subsubsection{Display options}
 % \begin{macro}{\new@eledform@custom}
-% The \cs{new@eledform@custom} macro has two action :
+% The \cs{new@eledform@custom} macro has two actions :
 % \begin{enumerate}
-%    \item Define the default value of an option (\cs{option@}.
+%    \item Define the default value of an option (\cs{option@}).
 %    \item Create the command which modify this option (\cs{option}).
 % \end{enumerate}
 %    \begin{macrocode}
