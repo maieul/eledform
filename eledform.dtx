@@ -57,7 +57,7 @@
 % \begin{abstract}
 % The \emph{eledmac} package provides tools to make critical editions of texts.
 % But it doesn't provide any formalism to note the textual variants: each user has to make his own formalism.
-% This package try to provide a formalism
+% This package tries to provide a formalism
 % which distinguishes between the \emph{formal} notation of textual variants and their typographical notation\footnote{The original idea of this package is described at \url{http://geekographie.maieul.net/Formaliser-les-variantes}. You can suggest new features or report bugs at \url{https://github.com/maieul/eledform/issues}.}.
 % \end{abstract}
 % \tableofcontents
@@ -107,9 +107,9 @@
 % \DescribeMacro{\manuscripts}
 % You must use \cs{Manuscripts}\marg{list}
 % to provide to \LaTeX\space the list of manuscripts used in the apparatus.
-% \LaTeX will print a warning message in the log file if you describe a variant
+% \LaTeX\ prints a warning message in the log file if you describe a variant
 % inside a manuscript which does'nt exist.
-% It also print an error in the PDF.
+% It also prints an error in the PDF.
 % The list of manuscripts is a comma separated list:
 % \begin{verbatim}
 % \manuscripts{A,B,C,D}
@@ -144,7 +144,7 @@
 % You can change it with \cs{manvarseparator}\marg{separator}.
 %
 % \DescribeMacro{\varseparator}
-% By default, a breakable space is printed beteween each variant of a lemma. 
+% By default, a breakable space is printed between each variant of a lemma. 
 % You can change it with \cs{varseparator}\marg{separator}.
 %\StopEventually{\PrintChanges}
 % \section{Implementation}
@@ -171,7 +171,7 @@
 % \end{macro}
 % \subsection{Print the critical notes}
 % \begin{macro}{\var}
-% The \cs{var} macro is the only public macro, which calls all private macro.
+% The \cs{var} macro is the only public macro, which calls all private macros.
 %    \begin{macrocode}
 \newcommandx*{\var}[5][1,5,usedefault]{%
 %    \end{macrocode}
@@ -188,19 +188,19 @@
 %    \begin{macrocode}
         \varnote@{%
 %    \end{macrocode}
-% If the third arg is not empty, we call the \cs{del@} macro, which print the manuscript where the lemma is omitted
+% If the third argument is not empty, we call the \cs{del@} macro, which print the manuscript where the lemma is omitted
 %    \begin{macrocode}
             \ifstrempty{#3}{}%
         {\del@{#3}%
 %    \end{macrocode}
-%  If the third and fourth arg are both not empty, we print the separator between variants.
+%  If the third and fourth argument are both not empty, we print the separator between variants.
 %    \begin{macrocode}
         \ifstrempty{#4}%
             {}%
             {\varseparator@}%
         }%
 %    \end{macrocode}
-% And so, we print all the variants which are not omission.
+% And so, we print all the variants which are not an omission.
 %  \begin{macrocode}
             \var@{#4}%
         }%
@@ -235,7 +235,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\var@}
-% The \cs{var@} macro loops on the non deletion variants. 
+% The \cs{var@} macro loops on the non omission variants. 
 % Except for the first variant, it prints the variant separator.
 %    \begin{macrocode}
 \newcommand{\var@}[1]{%
@@ -247,8 +247,8 @@
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\var@@}
-% The \cs{var@@} macro prints manuscripts for a singular variant,
-% and after that, this variant.
+% The \cs{var@@} macro prints manuscripts for a singular variant
+% and this variant after that.
 %    \begin{macrocode}
 \newcommand{\var@@}[2]{%
     \renewcommand{\do}[1]{%
@@ -268,7 +268,7 @@
 %    \end{macrocode}
 % \end{macro}
 % \begin{macro}{\varseries}
-% The \cs{varseries} macro redefines the reference.
+% The \cs{varseries} macro redefines this reference.
 %    \begin{macrocode}
 \newcommand{\varseries}[1]{\letcs{\varnote@}{#1footnote}}
 %    \end{macrocode}
@@ -278,7 +278,7 @@
 % The \cs{new@eledform@custom} macro has two actions :
 % \begin{enumerate}
 %    \item Define the default value of an option (\cs{option@}).
-%    \item Create the command which modify this option (\cs{option}).
+%    \item Create the command which modifies this option (\cs{option}).
 % \end{enumerate}
 %    \begin{macrocode}
 \newcommand{\new@eledform@custom}[2]{%
