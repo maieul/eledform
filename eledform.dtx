@@ -72,11 +72,11 @@
 % P is the manuscript which is used as reference.
 % Variants in A, B, C, D are shown in the apparatus.
 % \item The pseudo-word \enquote{lorem} has these variants :
-% 	\begin{description}
-%  	 \item[A and B]the word is omitted.
-% 	 \item[C]the word is replaced by \enquote{loram}.
-% 	 \item[D]the word is replaced by \enquote{lorim}. 
-% 	\end{description}
+%     \begin{description}
+%       \item[A and B]the word is omitted.
+%      \item[C]the word is replaced by \enquote{loram}.
+%      \item[D]the word is replaced by \enquote{lorim}. 
+%     \end{description}
 % \end{enumerate}
 % Without formalism, you could write :
 % \begin{verbatim}
@@ -126,16 +126,21 @@
 %   \item[\meta{lemma}]the lemma which has variants.
 %   \item[\meta{del}]a comma separated list of manuscripts where the lemma is ommited.
 %   \item[\meta{variants}]a comma separated list of variants. Each variant has the form \marg{manuscripts}\marg{variant}, where:
-% 	\begin{description}
-% 	 \item[\meta{manuscripts}]a comma separated list of manuscripts where the variant is.
-% 	 \item[\meta{variant}]the variant itself.
-%  	\end{description}
+%     \begin{description}
+%      \item[\meta{manuscripts}]a comma separated list of manuscripts where the variant is.
+%      \item[\meta{variant}]the variant itself.
+%      \end{description}
 %   \item[\meta{other}(optional)]other code linked to the lemma, for example a call to an critical footnote. 
 % \end{description}
 % \subsubsection{Customize}
 % \DescribeMacro{\manposition}
-% By default (since v1.1), the manuscripts are printed after the variants. 
+% By default (since v1.1), the manuscripts are printed after the variant. 
 % With \cs{manposition}\marg{position}, where position is any text except \verb+last+, you can change it.
+%
+% \DescribeMacro{\omitposition}
+% By default, the omission are printed at the begining of the variants. 
+% With \cs{omitposition}\marg{position}, where position is any text except \verb+first+, you can change it.
+% 
 % \DescribeMacro{\varseries}
 % By default, the notes for textual variants are printed in the A series of footnotes.
 % With \cs{varseries}\marg{letter}, you can change it.
@@ -193,23 +198,43 @@
 %    \begin{macrocode}
         \varnote@{%
 %    \end{macrocode}
+% In the case where the manuscripts with omission must be printed in first position.
+% \begin{macrocode}
+        \ifdefstring{\omitposition@}{first}{
+% \end{macrocode}
 % If the third argument is not empty, we call the \cs{del@} macro, which print the manuscript where the lemma is omitted
 %    \begin{macrocode}
             \ifstrempty{#3}{}%
-        {\del@{#3}%
+                {\del@{#3}%
 %    \end{macrocode}
 %  If the third and fourth argument are both not empty, we print the separator between variants.
 %    \begin{macrocode}
-        \ifstrempty{#4}%
-            {}%
-            {\varseparator@}%
-        }%
+                \ifstrempty{#4}%
+                    {}%
+                    {\varseparator@}%
+                }%
 %    \end{macrocode}
 % And so, we print all the variants which are not an omission.
 %  \begin{macrocode}
-            \var@{#4}%
-        }%
+                    \var@{#4}%
 %    \end{macrocode}
+% The same thing, but if the manuscripts with omission must be printed in last position.
+% \begin{macrocode}
+            }%
+            {%
+            \ifstrempty{#4}%
+                    {}%
+                    {\var@{#4}%
+                    \ifstrempty{#3}%
+                        {}%
+                        {%
+                            \varseparator@%
+                        }%
+                    }%
+            \ifstrempty{#3}{}{\del@{#3}}%
+            }%
+        }%
+% \end{macrocode}
 % Eventually, we add the critical notes which are not for textual criticism.
 % \begin{macrocode}
     #5%
@@ -236,8 +261,8 @@
         \print@manuscript{##1}%
     }%
     \ifdefstring{\manposition@}{last}%
-    		{\omittext@\manvarseparator@\docsvlist{#1}}
-    		{\docsvlist{#1}\manvarseparator@\omittext@}%
+            {\omittext@\manvarseparator@\docsvlist{#1}}
+            {\docsvlist{#1}\manvarseparator@\omittext@}%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -262,8 +287,8 @@
         \print@manuscript{##1}%
         }%
     \ifdefstring{\manposition@}{last}%
-    		{\manvarseparator@#2\docsvlist{#1}}%
-    		{\docsvlist{#1}\manvarseparator@#2}%
+            {\manvarseparator@#2\docsvlist{#1}}%
+            {\docsvlist{#1}\manvarseparator@#2}%
     }
 %    \end{macrocode}
 % \end{macro}
@@ -301,12 +326,15 @@
 % \begin{macro}{\manvarseparator}
 % \begin{macro}{\varseparator}
 % \begin{macro}{\manposition}
+% \begin{macro}{\omitposition}
 %    \begin{macrocode}
+\new@eledform@custom{omitposition}{first}
 \new@eledform@custom{manposition}{last}
 \new@eledform@custom{omittext}{\emph{omit}}
 \new@eledform@custom{manvarseparator}{~}
 \new@eledform@custom{varseparator}{\space}
 %    \end{macrocode}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
