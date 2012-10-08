@@ -287,7 +287,7 @@
         \print@manuscript{##1}%
         }%
     \ifdefstring{\manposition@}{last}%
-            {\manvarseparator@#2\docsvlist{#1}}%
+            {#2\manvarseparator@\docsvlist{#1}}%
             {\docsvlist{#1}\manvarseparator@#2}%
     }
 %    \end{macrocode}
