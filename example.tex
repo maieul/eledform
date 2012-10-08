@@ -6,7 +6,7 @@
 \manvarseparator{$\rightarrow$}	% Separator between manuscrit and variant
 \omittext{\emph{del}}				% Txt to print when a lemma is ommited
 \manuscript{A,B,C,D}	% Define the existing manuscripts
-
+\omitposition{last}
 \begin{document}
 \varseries{B}			% Define the series where textual variants will be printed
 \beginnumbering
@@ -14,7 +14,7 @@
 \edtext{}{\Afootnote{s}}	% Example to test \varseries
 \var{lorem}{A,B}{		% Basic example
 {{C}{loram}},
-{{D}{lorim}}
+{{D}{lorim}}%
 }
 \var{ipsum}{}{{C}{ipsem}}	% Only variants
 \var{dolor}{C}{}		% Only deletion

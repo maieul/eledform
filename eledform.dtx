@@ -227,9 +227,7 @@
                     {\var@{#4}%
                     \ifstrempty{#3}%
                         {}%
-                        {%
-                            \varseparator@%
-                        }%
+                        {\varseparator@}%
                     }%
             \ifstrempty{#3}{}{\del@{#3}}%
             }%
@@ -261,7 +259,7 @@
         \print@manuscript{##1}%
     }%
     \ifdefstring{\manposition@}{last}%
-            {\omittext@\manvarseparator@\docsvlist{#1}}
+            {\omittext@\manvarseparator@\docsvlist{#1}}%
             {\docsvlist{#1}\manvarseparator@\omittext@}%
 }
 %    \end{macrocode}
