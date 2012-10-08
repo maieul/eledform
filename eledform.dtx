@@ -47,7 +47,8 @@
 %   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %   Right brace   \}     Tilde         \~}
 %
-% \changes{v1.0}{2012/10/01}{First public release}
+% \changes{v1.0}{2012/10/01}{First public release.}
+% \changes{v1.1}{2012/10/08}{News options to change the order of the elements.}
 % \GetFileInfo{eledform.sty}
 %\DoNotIndex{\csgdef,\if,\fi,\else,\listgadd}
 %
@@ -132,6 +133,9 @@
 %   \item[\meta{other}(optional)]other code linked to the lemma, for example a call to an critical footnote. 
 % \end{description}
 % \subsubsection{Customize}
+% \DescribeMacro{\manposition}
+% By default (since v1.1), the manuscripts are printed after the variants. 
+% With \cs{manposition}\marg{position}, where position is any text except \verb+last+, you can change it.
 % \DescribeMacro{\varseries}
 % By default, the notes for textual variants are printed in the A series of footnotes.
 % With \cs{varseries}\marg{letter}, you can change it.
@@ -151,7 +155,7 @@
 % \section{Implementation}
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eledform}[2012/10/01 v1.0 formalism for eledmac]
+\ProvidesPackage{eledform}[2012/10/08 v1.1 formalism for eledmac]
 \RequirePackage{eledmac}
 %    \end{macrocode}
 % \subsection{Define manuscripts}
@@ -231,7 +235,9 @@
     \renewcommand{\do}[1]{%
         \print@manuscript{##1}%
     }%
-    \docsvlist{#1}\manvarseparator@\omittext@%
+    \ifdefstring{\manposition@}{last}%
+    		{\omittext@\manvarseparator@\docsvlist{#1}}
+    		{\docsvlist{#1}\manvarseparator@\omittext@}%
 }
 %    \end{macrocode}
 % \end{macro}
@@ -255,7 +261,9 @@
     \renewcommand{\do}[1]{%
         \print@manuscript{##1}%
         }%
-    \docsvlist{#1}\manvarseparator@#2%
+    \ifdefstring{\manposition@}{last}%
+    		{\manvarseparator@#2\docsvlist{#1}}%
+    		{\docsvlist{#1}\manvarseparator@#2}%
     }
 %    \end{macrocode}
 % \end{macro}
@@ -292,11 +300,14 @@
 % \begin{macro}{\omittext}
 % \begin{macro}{\manvarseparator}
 % \begin{macro}{\varseparator}
+% \begin{macro}{\manposition}
 %    \begin{macrocode}
+\new@eledform@custom{manposition}{last}
 \new@eledform@custom{omittext}{\emph{omit}}
 \new@eledform@custom{manvarseparator}{~}
 \new@eledform@custom{varseparator}{\space}
 %    \end{macrocode}
+% \end{macro}
 % \end{macro}
 % \end{macro}
 % \end{macro}
