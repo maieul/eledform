@@ -20,3 +20,5 @@ and the present README.md file
 Public repository : https://github.com/maieul/eledform.
 
 Support for new features and debug : https://github.com/maieul/eledform/issues
+
+This package is unmaintened.

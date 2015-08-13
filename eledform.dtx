@@ -11,7 +11,7 @@
 %
 % and version 1.3 or later is part of all distributions of 
 % LaTeX version 2003/06/01 or later.
-% This work has the LPPL maintenance status "maintained".
+% This work has the LPPL maintenance status "unmaintained".
 %
 % \fi
 
@@ -49,6 +49,7 @@
 %
 % \changes{v1.0}{2012/10/01}{First public release.}
 % \changes{v1.1}{2012/10/08}{News options to change the order of the elements.}
+% \changes{v1.1a}{2015/13/08}{Package unmaintened.}
 % \GetFileInfo{eledform.sty}
 %\DoNotIndex{\csgdef,\if,\fi,\else,\listgadd}
 %
@@ -56,6 +57,9 @@
 % \author{Maïeul Rouquette \\ maieul at maieul dot net}
 % \date{\fileversion\space\filedate}
 % \maketitle
+% \textbf{This package is unmaintened. 
+% Maïeul Rouquette has no more time to maintain it.
+% }
 % \begin{abstract}
 % The \emph{eledmac} package provides tools to make critical editions of texts.
 % But it doesn't provide any formalism to note the textual variants: each user has to make his own formalism.
@@ -125,7 +129,7 @@
 %   \item[\meta{short}  (optional)]an abbreviated version of the lemma for the notes.
 %   \item[\meta{lemma}]the lemma which has variants.
 %   \item[\meta{del}]a comma separated list of manuscripts where the lemma is ommited.
-%   \item[\meta{variants}]a comma separated list of variants. Each variant has the form \marg{manuscripts}\marg{variant}, where:
+%   \item[\meta{variants}]a comma separated list of variants. Each variant has the form \\verb+{+\marg{manuscripts}\marg{variant}\verb+}+, where:
 %     \begin{description}
 %      \item[\meta{manuscripts}]a comma separated list of manuscripts where the variant is.
 %      \item[\meta{variant}]the variant itself.
@@ -160,7 +164,7 @@
 % \section{Implementation}
 %    \begin{macrocode}
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{eledform}[2012/10/08 v1.1 formalism for eledmac]
+\ProvidesPackage{eledform}[2015/08/13 v1.1a formalism for eledmac]
 \RequirePackage{eledmac}
 %    \end{macrocode}
 % \subsection{Define manuscripts}
