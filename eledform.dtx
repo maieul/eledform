@@ -76,54 +76,53 @@
 % \item One text, with fives manuscripts: P, A, B, C, D.
 % P is the manuscript which is used as reference.
 % Variants in A, B, C, D are shown in the apparatus.
-% \item The pseudo-word \enquote{lorem} has these variants :
+% \item The pseudo-word \enquote{lorem} has these variants:
 %     \begin{description}
 %       \item[A and B]the word is omitted.
 %      \item[C]the word is replaced by \enquote{loram}.
 %      \item[D]the word is replaced by \enquote{lorim}. 
 %     \end{description}
 % \end{enumerate}
-% Without formalism, you could write :
+% Without formalism, you could write:
 % \begin{verbatim}
-% \edtext{lorem}{\Afootnote{AB \emph{omit} ; C loram ; D lorim}}
+% \edtext{lorem}{\Afootnote{AB \emph{omit}; C loram; D lorim}}
 % \end{verbatim}
-% Which produces in the critical notes:
+% Which produces this critical note:
 % \begin{quote}
-% lorem] AB omit ; C loram ; D lorim
+% lorem] AB omit; C loram; D lorim
 % \end{quote}
-% There is some limits with this method:
+% There are some limits for this method:
 % \begin{itemize}
 % \item If we want to change display, we must changes all notes.
 % \item We can't produce statistics.
 % \item Difficulty to export in other format than \LaTeX.
-% \item No method to check if we don't make mistake about manuscript.
+% \item No method to check if we're making mistakes regarding to the manuscripts.
 % \end{itemize}
 % \subsubsection{With formalism}
-% To describe the same thing, we propose this formalism :
+% To describe the same situation, we propose this formalism :
 % \begin{verbatim}
 %\var{lorem}{A,B}{
 %{{C}{loram}},
 %{{D}{lorim}}
 %}
 % \end{verbatim}
-% With \emph{eledform}, this will produce the same thing that the non-formalised form,
-% but without described inconveniences.
-% You could see example in the file \href{example.tex}{example.tex}, which produces \href{example.pdf}{example.pdf}.
+% With \emph{eledform}, this will produce the same result as the non-formalised form,
+% but without the described inconveniences.
+% You can see an example in the file \href{example.tex}{example.tex}, which produces \href{example.pdf}{example.pdf}.
 % \subsection{References}
 % \subsubsection{Declare the manuscripts}
 % \DescribeMacro{\manuscripts}
-% You must use \cs{Manuscripts}\marg{list}
-% to provide to \LaTeX\space the list of manuscripts used in the apparatus.
-% \LaTeX\ prints a warning message in the log file if you describe a variant
-% inside a manuscript which does'nt exist.
-% It also prints an error in the PDF.
+% You have to use \cs{Manuscripts}\marg{list}
+% to provide the list of manuscripts used in the apparatus.
+% \LaTeX\ prints a warning message in the log file if you're referring to a
+% manuscript that is not declared before.
+% It also prints an error in the resulting file.
 % The list of manuscripts is a comma separated list:
 % \begin{verbatim}
 % \manuscripts{A,B,C,D}
 % \end{verbatim}
 % \subsubsection{Declare variants}
-% \DescribeMacro{\varseries}
-%  
+% \DescribeMacro{\var}
 % The main macro is \cs{var}\oarg{short}\marg{lemma}\marg{del}\marg{variants}\oarg{other}.
 % This macro takes five arguments, two are optional.
 % \begin{description}
@@ -151,11 +150,11 @@
 % With \cs{varseries}\marg{letter}, you can change it.
 %
 % \DescribeMacro{\omittext}
-% When a manuscript omit a lemma, \emph{eledform} print \verb|\emph{omit}|.
+% When a manuscript omits a lemma, \emph{eledform} prints \verb|\emph{omit}|.
 % You can change it with \cs{omittext}\marg{text}.
 % 
 % \DescribeMacro{\manvarseparator}
-% By default, a non breakable space is printed between the manuscript and the variant.
+% By default, a non breakable space is printed between the manuscript letter and the variant.
 % You can change it with \cs{manvarseparator}\marg{separator}.
 %
 % \DescribeMacro{\varseparator}
@@ -251,7 +250,7 @@
 \newcommand{\print@manuscript}[1]{%
     \ifinlist{#1}{\manuscripts@}%
         {#1}%
-        {\eledmac@warning{Unknew man. #1, p.\the\page@num  ; l.\the\line@num}\underline{unknew man. #1}}%
+        {\eledmac@warning{Manuscript #1 not declared, p.\the\page@num  ; l.\the\line@num}\underline{Manuscript #1 not declared!}}%
     }
 %    \end{macrocode}
 % \end{macro}
