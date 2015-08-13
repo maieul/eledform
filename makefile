@@ -12,7 +12,7 @@ PACKAGE = *.dtx \
 .PHONY: all dist clean cleanall
 
 
-all:eledform.sty eledform.pdf dist clean
+all:eledform.sty  eledform.pdf dist clean makefile
 
 
 example.pdf:example.tex eledform.sty
@@ -20,7 +20,7 @@ example.pdf:example.tex eledform.sty
 	pdflatex example.tex
 	pdflatex example.tex
 
-%.sty: %.ins %.dtx 
+%.sty: %.ins %.dtx
 	@rm -f $*.sty
 	@pdflatex $*.ins
 
@@ -30,12 +30,15 @@ example.pdf:example.tex eledform.sty
 	makeindex -s gglo.ist -o $*.gls $*.glo
 	makeindex -s gind.ist -o $*.ind $*.idx
 	@xelatex $*.dtx
-	
+
 
 dist: $(PACKAGE)
+	rm -rf eledform
+	mkdir eledform
+	ln $(PACKAGE) eledform
 	@$(RM) ../eledform.zip
-	zip ../eldeform.zip $(PACKAGE)
-	
+	zip -r ../eledform.zip  eledform
+
 
 clean:
 	@$(RM) *.aux *.log *.out *.toc  *glo *idx *bib *bbl *blg *xml *gls *ilg *gz *ind
